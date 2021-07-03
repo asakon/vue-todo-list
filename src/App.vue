@@ -1,6 +1,7 @@
 <template>
 <ul>
-  <li>{{ todo }}</li>
+  <li v-bind:title="todo">
+    {{ todo.slice(0, 10) + '...' }}</li>
 </ul>
 </template>
 
@@ -14,7 +15,7 @@ export default {
     ToDoList
   },
   data() {
-    return { todo: '海に行く' }
+    return { todo: '海に行って、砂遊びを友達とする' }
   }
 }
 </script>
