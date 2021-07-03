@@ -1,5 +1,7 @@
 <template>
-  <ToDoList />
+<ul>
+  <li>{{ todo }}</li>
+</ul>
 </template>
 
 
@@ -10,6 +12,9 @@ export default {
   name: 'App',
   components: {
     ToDoList
+  },
+  data() {
+    return { todo: '海に行く' }
   }
 }
 </script>
