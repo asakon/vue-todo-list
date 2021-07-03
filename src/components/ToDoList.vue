@@ -22,7 +22,11 @@ export default {
   },
   methods: {
     handleClick() {
-      alert(this.inputValue)
+      this.todoItems.push({
+        id: this.todoItems.length + 1,
+        text: this.inputValue
+      })
+      this.inputValue = ''
     }
   }
 };
