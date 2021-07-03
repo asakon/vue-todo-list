@@ -1,7 +1,7 @@
 <template>
 <input v-model="inputValue">
 <button v-on:click="handleClick">
-  入力内容を表示
+  ToDoを追加
 </button>
 <ul>
   <li v-for="todo in todoItems"
