@@ -16,32 +16,35 @@
 <script>
 export default {
   data() {
+    const todoItems = [
+      {
+        id: 1,
+        done: false,
+        text: '海に行って、砂遊びを友達とする'
+      },
+      {
+        id: 2,
+        done: false,
+        text: '図書館に行って、マンガを借りる'
+      }
+    ]
     return {
       inputValue: '',
-      todoItems: [
-        {
-          id: 1,
-          done: false,
-          text: '海に行って、砂遊びを友達とする'
-          },
-        {
-          id: 2,
-          done: false,
-          text: '図書館に行って、マンガを借りる'
-        }
-      ],
+      todoItems,
+      filterdTodoItems: todoItems,
       filterValue: ''
     }
   },
-  computed: {
-    filterdTodoItems() {
-      if(!this.filterValue) {
-        return this.todoItems
-      }
-      return this.todoItems.filter((todo) => {
-        return todo.text.includes(this.filterValue)
-      })
-    }
+  watch: {
+    filterValue() {
+      this.updateFilteredToDoItems()
+    },
+    todoItems: {
+      handler() {
+        this.updateFilteredToDoItems()
+      },
+      deep: true
+    },
   },
   methods: {
     handleClick() {
@@ -49,8 +52,16 @@ export default {
         id: this.todoItems.length + 1,
         text: this.inputValue
       })
-      this.inputValue = ''
+      this.inputValue = '';
+    },
+    updateFilteredToDoItems() {
+      this.filterdTodoItems = 
+        this.filterValue 
+          ? this.todoItems.filter((todo) =>
+            todo.text.includes(this.filterValue)
+          )
+          : this.todoItems
     }
   }
-};
+}
 </script>
