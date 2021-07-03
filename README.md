@@ -10,3 +10,11 @@ npm init vite-app vue-todo-list
 cdして
 
 npm install
+
+## npm run dev コマンド
+
+## SFC
+
+Single File Components
+
+単一ファイルコンポーネント
