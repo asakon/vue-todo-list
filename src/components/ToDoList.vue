@@ -1,10 +1,11 @@
 <template>
 <input v-model="inputValue">
+<input v-model="filterValue" placeholder="フィルタテキスト">
 <button v-on:click="handleClick">
   ToDoを追加
 </button>
 <ul>
-  <li v-for="todo in todoItems"
+  <li v-for="todo in filterdTodoItems"
     v-bind:key="todo.id"
     v-on:click="todo.done = !todo.done">
     <span v-if="todo.done">✓</span>
@@ -28,8 +29,19 @@ export default {
           done: false,
           text: '図書館に行って、マンガを借りる'
         }
-      ]
-    } 
+      ],
+      filterValue: ''
+    }
+  },
+  computed: {
+    filterdTodoItems() {
+      if(!this.filterValue) {
+        return this.todoItems
+      }
+      return this.todoItems.filter((todo) => {
+        return todo.text.includes(this.filterValue)
+      })
+    }
   },
   methods: {
     handleClick() {
