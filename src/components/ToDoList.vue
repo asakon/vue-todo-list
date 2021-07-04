@@ -54,7 +54,7 @@ export default {
         id: this.todoItems.length + 1,
         text: this.inputValue
       })
-      this.inputValue = '';
+      this.inputValue = ''
     },
     updateFilteredToDoItems() {
       this.filterdTodoItems = 
