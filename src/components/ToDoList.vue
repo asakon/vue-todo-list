@@ -5,18 +5,18 @@
   ToDoを追加
 </button>
 <ul>
-  <li v-for="todo in filterdTodoItems"
+  <ToDoItem v-for="todo in filterdTodoItems"
     v-bind:key="todo.id"
-    class="todo-item"
-    v-bind:class="{'done': todo.done}"
-    v-on:click="todo.done = !todo.done">
-    <span v-if="todo.done">✓</span>
+    v-bind:done="todo.done"
+    v-on:toggle="todo.done = !todo.done">
     {{ todo.text }}
-  </li>
+  </ToDoItem>
 </ul>
 </template>
 <script>
+import ToDoItem from './ToDoItem.vue'
 export default {
+  components: { ToDoItem },
   data() {
     const todoItems = [
       {
